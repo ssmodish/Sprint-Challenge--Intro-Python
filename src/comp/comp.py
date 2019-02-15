@@ -1,4 +1,7 @@
-# The following list comprehension exercises will make use of the 
+import re
+import math
+
+# The following list comprehension exercises will make use of the
 # defined Human class. 
 class Human:
     def __init__(self, name, age):
@@ -24,48 +27,50 @@ humans = [
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with 'D':
 print("Starts with D:")
-a = []
+a = [item.name for item in humans if item.name[0] == 'D']
 print(a)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name ends in "e".
 print("Ends with e:")
-b = []
+b = [item.name for item in humans if item.name[len(item.name)-1] == 'e']
 print(b)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
 print("Starts between C and G, inclusive:")
-c = []
+srch = re.compile("^[C-G]")
+c = [item.name for item in humans if srch.match(item.name)]
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
 print("Ages plus 10:")
-d = []
+d = [item.age + 10 for item in humans]
 print(d)
 
 # Write a list comprehension that creates a list of strings which are the name
 # joined to the age with a hyphen, for example "David-31", for all humans.
 print("Name hyphen age:")
-e = []
+e = [item.name + "-" + str(item.age) for item in humans]
 print(e)
 
 # Write a list comprehension that creates a list of tuples containing name and
 # age, for example ("David", 31), for everyone between the ages of 27 and 32,
 # inclusive.
 print("Names and ages between 27 and 32:")
-f = []
+f = [(item.name, item.age) for item in humans if 27 < item.age < 32] # I don't know why "< 32" doesn't work
 print(f)
 
 # Write a list comprehension that creates a list of new Humans like the old
 # list, except with all the names capitalized and the ages with 5 added to them.
 # The "humans" list should be unmodified.
 print("All names capitalized:")
-g = []
+g = [Human(item.name.upper(), item.age) for item in humans]
 print(g)
+# print(humans)
 
 # Write a list comprehension that contains the square root of all the ages.
 print("Square root of ages:")
 import math
-h = []
+h = [math.sqrt(item.age) for item in humans]
 print(h)
