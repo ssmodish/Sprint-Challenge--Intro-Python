@@ -65,12 +65,11 @@ print(f)
 # list, except with all the names capitalized and the ages with 5 added to them.
 # The "humans" list should be unmodified.
 print("All names capitalized:")
-g = [Human(item.name.upper(), item.age) for item in humans]
+g = [Human(item.name.upper(), item.age + 5) for item in humans]
 print(g)
 # print(humans)
 
 # Write a list comprehension that contains the square root of all the ages.
 print("Square root of ages:")
-import math
 h = [math.sqrt(item.age) for item in humans]
 print(h)
